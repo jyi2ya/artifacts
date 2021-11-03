@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd "$(dirname "$0")/.." || exit 1
+
+find [!.]* -path '*/Todo' -prune -o -type f | sed 's/^.*\///' | awk -F '.' '
+{ ++cnt[$NF] }
+END { for (i in cnt) printf("%-20s %s\n", i, cnt[i]) }
+' | sort -n -k2

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd "$(dirname "$0")"/.. || exit 1
+
+{
+	total=0
+	for i in *; do
+		if [ -d "$i" ]; then
+			cnt="$(find "$i"/ \( -name "*.c" -o -name "*.cpp" \) \
+				-exec cat '{}' \; | wc -l)"
+			printf '%-25s %-s\n' "$i" "$cnt"
+			total=$((total + cnt))
+		fi
+	done
+	printf '%-25s %-s\n' "total" "$total"
+} | sort -n -k 2
