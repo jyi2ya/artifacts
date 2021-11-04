@@ -23,6 +23,6 @@ int main(void)
 	for (i = 0, pw = 1; i < n; ++i, pw *= 2)
 		tot += h * 2 / pw;
 	tot -= h;
-	printf("第%d次落地时，共经过%.4f米；反弹高度是%.4f米。\n", n, tot, h / pw);
+	printf("第%d次落地时，共经过%.4f米，反弹高度是%.4f米。\n", n, tot, h / pw);
 	return 0;
 }
